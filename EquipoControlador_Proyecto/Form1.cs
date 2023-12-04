@@ -1,4 +1,4 @@
-using System.Net;
+ï»¿using System.Net;
 using System.Net.Sockets;
 
 namespace EquipoControlador_Proyecto
@@ -17,7 +17,7 @@ namespace EquipoControlador_Proyecto
 
                 TcpClient remoto = new TcpClient();
                 remoto.Connect(tb_ip.Text, 8888);//Se utiliza localhost
-                MessageBox.Show("Conexión establecida con el servidor en localhost.");
+                MessageBox.Show("Conexion establecida con el servidor en localhost.");
 
                 Opciones opcionesForm = new Opciones(remoto);
                 opcionesForm.Show();

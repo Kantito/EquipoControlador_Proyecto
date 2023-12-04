@@ -32,7 +32,8 @@ namespace EquipoControlador_Proyecto
                     if (response != null)
                     {
                         // Asegúrate de que las actualizaciones de la interfaz de usuario ocurran en el hilo de la interfaz de usuario.
-                        this.Invoke(new Action(() => {
+                        this.Invoke(new Action(() =>
+                        {
                             MessageBox.Show(response);
                         }));
                     }
@@ -165,10 +166,13 @@ namespace EquipoControlador_Proyecto
         {
             EnviarComandoAlServidor("GET_TIME_ZONE");
         }
-
         private void Fecha_Hora_Click(object sender, EventArgs e)
         {
-            EnviarComandoAlServidor("GET_DATE_TIME");
+            EnviarComandoAlServidor("GET_TIME_DATE");
+        }
+        private void Procesos_ejecucion_Click(object sender, EventArgs e)
+        {
+            EnviarComandoAlServidor("GET_TOTAL_PROCESS");
         }
         private void Subir_volumen_Click(object sender, EventArgs e)
         {
@@ -184,7 +188,14 @@ namespace EquipoControlador_Proyecto
         {
             EnviarComandoAlServidor("TAKE_SCREENSHOT");
         }
-
+        private void Cerrar_sesion_Windows_Click(object sender, EventArgs e)
+        {
+            EnviarComandoAlServidor("CLOSE_SESION");
+        }
+        private void Finalizar_Procesos_Click(object sender, EventArgs e)
+        {
+            EnviarComandoAlServidor("KILL_PROCESS");
+        }
         private void Desconectar_Click(object sender, EventArgs e)
         {
             EnviarComandoAlServidor("DISCONNECT");
