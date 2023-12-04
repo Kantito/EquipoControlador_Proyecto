@@ -32,7 +32,8 @@ namespace EquipoControlador_Proyecto
                     if (response != null)
                     {
                         // Asegúrate de que las actualizaciones de la interfaz de usuario ocurran en el hilo de la interfaz de usuario.
-                        this.Invoke(new Action(() => {
+                        this.Invoke(new Action(() =>
+                        {
                             MessageBox.Show(response);
                         }));
                     }
@@ -168,7 +169,7 @@ namespace EquipoControlador_Proyecto
 
         private void Fecha_Hora_Click(object sender, EventArgs e)
         {
-            EnviarComandoAlServidor("GET_DATE_TIME");
+            EnviarComandoAlServidor("GET_TIME_DATE");
         }
         private void Subir_volumen_Click(object sender, EventArgs e)
         {
@@ -189,6 +190,11 @@ namespace EquipoControlador_Proyecto
         {
             EnviarComandoAlServidor("DISCONNECT");
             Close(); // Cierra la ventana de opciones después de desconectar
+        }
+
+        private void Procesos_ejecucion_Click(object sender, EventArgs e)
+        {
+            EnviarComandoAlServidor("GET_TOTAL_PROCESS"); 
         }
     }
 }

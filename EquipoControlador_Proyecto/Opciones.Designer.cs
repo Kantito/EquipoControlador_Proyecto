@@ -50,7 +50,6 @@
             Cerrar_sesion_Windows = new Button();
             Finalizar_Procesos = new Button();
             Desconectar = new Button();
-            flp_listaUnidadesDD = new FlowLayoutPanel();
             SuspendLayout();
             // 
             // Nombre_SO
@@ -97,7 +96,7 @@
             // 
             Info_Procesador.Location = new Point(49, 343);
             Info_Procesador.Name = "Info_Procesador";
-            Info_Procesador.Size = new Size(144, 26);
+            Info_Procesador.Size = new Size(144, 47);
             Info_Procesador.TabIndex = 4;
             Info_Procesador.Text = "Información Procesador";
             Info_Procesador.UseVisualStyleBackColor = true;
@@ -171,12 +170,13 @@
             Procesos_ejecucion.TabIndex = 15;
             Procesos_ejecucion.Text = "Procesos en ejecución";
             Procesos_ejecucion.UseVisualStyleBackColor = true;
+            Procesos_ejecucion.Click += Procesos_ejecucion_Click;
             // 
             // Captura_Pantalla
             // 
             Captura_Pantalla.Location = new Point(446, 68);
             Captura_Pantalla.Name = "Captura_Pantalla";
-            Captura_Pantalla.Size = new Size(161, 26);
+            Captura_Pantalla.Size = new Size(161, 47);
             Captura_Pantalla.TabIndex = 16;
             Captura_Pantalla.Text = "Realizar captura de pantalla";
             Captura_Pantalla.UseVisualStyleBackColor = true;
@@ -262,19 +262,11 @@
             Desconectar.Text = "Desconectar";
             Desconectar.UseVisualStyleBackColor = true;
             // 
-            // flp_listaUnidadesDD
-            // 
-            flp_listaUnidadesDD.Location = new Point(642, 323);
-            flp_listaUnidadesDD.Name = "flp_listaUnidadesDD";
-            flp_listaUnidadesDD.Size = new Size(146, 173);
-            flp_listaUnidadesDD.TabIndex = 26;
-            // 
             // Opciones
             // 
             AutoScaleDimensions = new SizeF(7F, 17F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 510);
-            Controls.Add(flp_listaUnidadesDD);
             Controls.Add(Desconectar);
             Controls.Add(Finalizar_Procesos);
             Controls.Add(Cerrar_sesion_Windows);
@@ -326,6 +318,5 @@
         private Button Cerrar_sesion_Windows;
         private Button Finalizar_Procesos;
         private Button Desconectar;
-        private FlowLayoutPanel flp_listaUnidadesDD;
     }
 }

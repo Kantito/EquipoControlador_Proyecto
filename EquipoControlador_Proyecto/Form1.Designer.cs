@@ -68,7 +68,6 @@
             tb_ip.Name = "tb_ip";
             tb_ip.Size = new Size(100, 25);
             tb_ip.TabIndex = 3;
-            tb_ip.TextChanged += tb_ip_TextChanged;
             // 
             // Form1
             // 
