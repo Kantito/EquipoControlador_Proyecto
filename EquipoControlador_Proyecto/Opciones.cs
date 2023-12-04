@@ -1,99 +1,136 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.IO;
+using System.Net.Sockets;
 using System.Windows.Forms;
 
 namespace EquipoControlador_Proyecto
 {
     public partial class Opciones : Form
     {
-        public Opciones()
+        private TcpClient client;
+        private StreamWriter writer;
+        private StreamReader reader;
+
+        public Opciones(TcpClient connectedClient)
         {
             InitializeComponent();
+            client = connectedClient;
+            NetworkStream stream = client.GetStream();
+            writer = new StreamWriter(stream);
+            reader = new StreamReader(stream);
+
+            EnableAllActionButtons();
         }
 
-        private void Desconectar_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private void Resolucion_pantalla_Click(object sender, EventArgs e)
         {
-            ejecutarComando("powershell -c \"(Get-WmiObject -Namespace root\cimv2 -Class Win32_VideoController).CurrentHorizontalResolution, (Get-WmiObject -Namespace root\cimv2 -Class Win32_VideoController).CurrentVerticalResolution");
-        }
-
-        private void Bajar_volumen_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Nombre_SO_Click(object sender, EventArgs e)
-        {
-            String mensaje = Environment.OSVersion.VersionString;
-            MessageBox.Show(mensaje, "Nombre Sistema Operativo", MessageBoxButtons.OK,
-                MessageBoxIcon.Information);
-        }
-
-        private void Plataforma_SO_Click(object sender, EventArgs e)
-        {
-            String mensaje = Environment.OSVersion.Platform.ToString();
-            MessageBox.Show(mensaje, "Plataforma del Sistema Operativo", MessageBoxButtons.OK,
-            MessageBoxIcon.Information);
-            
-        }
-
-        private void Version_SO_Click(object sender, EventArgs e)
-        {
-            String mensaje = Environment.OSVersion.Version.ToString();
-            MessageBox.Show(mensaje, "Version del Sistema Operativo", MessageBoxButtons.OK,
-            MessageBoxIcon.Information);
-        }
-
-        private void Nombre_Equipo_Click(object sender, EventArgs e)
-        {
-            String mensaje = Environment.MachineName;
-            MessageBox.Show(mensaje, "Nombre del equipo", MessageBoxButtons.OK,
-            MessageBoxIcon.Information);
-        }
-
-        private void Info_Procesador(object sender, EventArgs e)
-        {
-            ejecutarComando("wmic cpu get caption, deviceid, name, numberofcores, maxclockspeed");
-        }
-
-        private void Total_RAM_Click(object sender, EventArgs e)
-        {
-            ejecutarComando("powershell -c \"Get-WmiObject Win32_PhysicalMemory | Measure-Object -Property Capacity -Sum | Select-Object @{Name='TotalGB';Expression={$_.Sum / 1GB}}");
+            EnviarComandoAlSever("GetResolution");
         }
 
         private void Nombre_Usuario_Click(object sender, EventArgs e)
         {
-            WindowsIdentity identidad = WindowsIdentity.GetCurrent();
-            if (identidad != null)
+
+            EnviarComandoAlSever("GetUserName");
+        }
+
+        private StreamReader GetReader()
+        {
+            return reader;
+        }
+
+        private void LeerRespuestaDelServidor(StreamReader reader)
+        {
+            if (client != null && client.Connected)
             {
-                MessageBox.Show(identidad.Name, "Nombre del usuario actual", MessageBoxButtons.OK,
-           MessageBoxIcon.Information);
+                string response = reader.ReadLine(); // Leer la respuesta del servidor
+                MessageBox.Show(response); // Mostrar la respuesta en un MessageBox
+            }
+            else
+            {
+                MessageBox.Show("No conectado al servidor.");
             }
         }
 
-        private void ejecutarComando(string comando)
+
+
+
+        private void EnviarComandoAlSever(string command)
         {
-            System.Diagnostics.ProcessStartInfo info = null;
-            System.Diagnostics.Process proceso = null;
+            if (client != null && client.Connected)
+            {
+                writer.WriteLine(command);
+                writer.Flush();
+            }
+            else
+            {
+                MessageBox.Show("No conectado al servidor.");
+            }
+        }
 
-            info = new System.Diagnostics.ProcessStartInfo("cmd", "/c" + comando);
-            info.RedirectStandardOutput = true;
-            info.UseShellExecute = false;
-            info.CreateNoWindow = true;
 
-            proceso = new System.Diagnostics.Process();
-            proceso.StartInfo = info;
-            proceso.Start();
+        private void EnableAllActionButtons()
+        {
+            Resolucion_pantalla.Enabled = true;
+            Nombre_Usuario.Enabled = true;
+            Total_RAM.Enabled = true;
+        }
+
+        private void DisableAllActionButtons()
+        {
+            Resolucion_pantalla.Enabled = false;
+            Nombre_Usuario.Enabled = false;
+            Total_RAM.Enabled = false;
+        }
+
+        protected override void OnFormClosing(FormClosingEventArgs e)
+        {
+            base.OnFormClosing(e);
+            writer?.Close();
+            reader?.Close();
+            client?.Close();
+        }
+
+        private void Nombre_SO_Click(object sender, EventArgs e)
+        {
+            EnviarComandoAlSever("GET_OS_NAME"); // Enviar el comando para obtener el nombre del SO
+            LeerRespuestaDelServidor(GetReader());
+        }
+
+        private void Plataforma_SO_Click(object sender, EventArgs e)
+        {
+            EnviarComandoAlSever("GET_OS_PLATFORM");
+            LeerRespuestaDelServidor(GetReader());
+        }
+
+        private void Version_SO_Click(object sender, EventArgs e)
+        {
+            EnviarComandoAlSever("GET_OS_VERSION");
+            LeerRespuestaDelServidor(GetReader());
+        }
+
+        private void Nombre_Equipo_Click(object sender, EventArgs e)
+        {
+            EnviarComandoAlSever("GET_COMPUTER_NAME");
+            LeerRespuestaDelServidor(GetReader());
+        }
+
+        private void Info_Procesador_Click(object sender, EventArgs e)
+        {
+            EnviarComandoAlSever("GET_PROCESSOR_INFO");
+            LeerRespuestaDelServidor(GetReader());
+        }
+
+        private void Total_RAM_Click(object sender, EventArgs e)
+        {
+            EnviarComandoAlSever("GET_TOTAL_RAM");
+            LeerRespuestaDelServidor(GetReader());
+        }
+
+        private void Lista_Unidades_Disco_Duro_Click(object sender, EventArgs e)
+        {
+            EnviarComandoAlSever("GET_LIST_DD");
+            LeerRespuestaDelServidor(GetReader());
         }
     }
 }

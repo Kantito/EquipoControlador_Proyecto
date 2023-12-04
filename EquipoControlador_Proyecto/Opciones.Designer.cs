@@ -50,6 +50,7 @@
             Cerrar_sesion_Windows = new Button();
             Finalizar_Procesos = new Button();
             Desconectar = new Button();
+            flp_listaUnidadesDD = new FlowLayoutPanel();
             SuspendLayout();
             // 
             // Nombre_SO
@@ -70,6 +71,7 @@
             Plataforma_SO.TabIndex = 1;
             Plataforma_SO.Text = "Plataforma SO";
             Plataforma_SO.UseVisualStyleBackColor = true;
+            Plataforma_SO.Click += Plataforma_SO_Click;
             // 
             // Version_SO
             // 
@@ -79,6 +81,7 @@
             Version_SO.TabIndex = 2;
             Version_SO.Text = "Versión SO";
             Version_SO.UseVisualStyleBackColor = true;
+            Version_SO.Click += Version_SO_Click;
             // 
             // Nombre_Equipo
             // 
@@ -88,6 +91,7 @@
             Nombre_Equipo.TabIndex = 3;
             Nombre_Equipo.Text = "Nombre Equipo";
             Nombre_Equipo.UseVisualStyleBackColor = true;
+            Nombre_Equipo.Click += Nombre_Equipo_Click;
             // 
             // Info_Procesador
             // 
@@ -97,6 +101,7 @@
             Info_Procesador.TabIndex = 4;
             Info_Procesador.Text = "Información Procesador";
             Info_Procesador.UseVisualStyleBackColor = true;
+            Info_Procesador.Click += Info_Procesador_Click;
             // 
             // Total_RAM
             // 
@@ -106,6 +111,7 @@
             Total_RAM.TabIndex = 5;
             Total_RAM.Text = "Total RAM";
             Total_RAM.UseVisualStyleBackColor = true;
+            Total_RAM.Click += Total_RAM_Click;
             // 
             // Lista_Unidades_Disco_Duro
             // 
@@ -115,6 +121,7 @@
             Lista_Unidades_Disco_Duro.TabIndex = 6;
             Lista_Unidades_Disco_Duro.Text = "Lista Unidades de Disco Duro";
             Lista_Unidades_Disco_Duro.UseVisualStyleBackColor = true;
+            Lista_Unidades_Disco_Duro.Click += Lista_Unidades_Disco_Duro_Click;
             // 
             // Resolucion_pantalla
             // 
@@ -134,6 +141,7 @@
             Nombre_Usuario.TabIndex = 12;
             Nombre_Usuario.Text = "Nombre Usuario";
             Nombre_Usuario.UseVisualStyleBackColor = true;
+            Nombre_Usuario.Click += Nombre_Usuario_Click;
             // 
             // Zona_horaria
             // 
@@ -197,7 +205,6 @@
             Bajar_volumen.TabIndex = 19;
             Bajar_volumen.Text = "Bajar Volumen";
             Bajar_volumen.UseVisualStyleBackColor = true;
-            Bajar_volumen.Click += Bajar_volumen_Click;
             // 
             // Silenciar_sonido
             // 
@@ -252,13 +259,20 @@
             Desconectar.TabIndex = 25;
             Desconectar.Text = "Desconectar";
             Desconectar.UseVisualStyleBackColor = true;
-            Desconectar.Click += Desconectar_Click;
+            // 
+            // flp_listaUnidadesDD
+            // 
+            flp_listaUnidadesDD.Location = new Point(642, 285);
+            flp_listaUnidadesDD.Name = "flp_listaUnidadesDD";
+            flp_listaUnidadesDD.Size = new Size(146, 153);
+            flp_listaUnidadesDD.TabIndex = 26;
             // 
             // Opciones
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(flp_listaUnidadesDD);
             Controls.Add(Desconectar);
             Controls.Add(Finalizar_Procesos);
             Controls.Add(Cerrar_sesion_Windows);
@@ -310,5 +324,6 @@
         private Button Cerrar_sesion_Windows;
         private Button Finalizar_Procesos;
         private Button Desconectar;
+        private FlowLayoutPanel flp_listaUnidadesDD;
     }
 }

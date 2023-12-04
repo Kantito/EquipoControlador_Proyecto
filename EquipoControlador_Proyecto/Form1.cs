@@ -1,3 +1,4 @@
+using System.Net;
 using System.Net.Sockets;
 
 namespace EquipoControlador_Proyecto
@@ -11,25 +12,26 @@ namespace EquipoControlador_Proyecto
 
         private void btn_conectar_Click(object sender, EventArgs e)
         {
-            string direccionIP = tb_ip.Text;
-
             try
             {
+   
+                TcpClient remoto = new TcpClient();
+                remoto.Connect(tb_ip.Text, 8888);//Se utiliza localhost
+                MessageBox.Show("Conexión establecida con el servidor en localhost.");
 
-                 
-                using (TcpClient remoto = new TcpClient())
-                {
-                    remoto.Connect(direccionIP, 8888);
-                    Console.WriteLine("Conexión establecida con el equipo remoto.");
-                }
+                Opciones opcionesForm = new Opciones(remoto);
+                opcionesForm.Show();
+                
+                this.Hide();
             }
-
             catch (Exception ex)
             {
-                Console.WriteLine("Error al conectar al equipo remoto: " + ex.Message);
+                MessageBox.Show("Error: " + ex.Message);
             }
-
-
         }
+
+  
+
     }
+
 }
