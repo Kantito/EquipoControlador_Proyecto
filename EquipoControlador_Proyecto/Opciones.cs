@@ -132,5 +132,17 @@ namespace EquipoControlador_Proyecto
             EnviarComandoAlSever("GET_LIST_DD");
             LeerRespuestaDelServidor(GetReader());
         }
+
+        private void Zona_horaria_Click(object sender, EventArgs e)
+        {
+            EnviarComandoAlSever("GET_TIME_ZONE");
+            LeerRespuestaDelServidor(GetReader());
+        }
+
+        private void Fecha_Hora_Click(object sender, EventArgs e)
+        {
+            EnviarComandoAlSever("GET_TIME_DATE");
+            LeerRespuestaDelServidor(GetReader());
+        }
     }
 }
