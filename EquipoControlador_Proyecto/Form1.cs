@@ -14,14 +14,14 @@ namespace EquipoControlador_Proyecto
         {
             try
             {
-   
+
                 TcpClient remoto = new TcpClient();
                 remoto.Connect(tb_ip.Text, 8888);//Se utiliza localhost
                 MessageBox.Show("Conexión establecida con el servidor en localhost.");
 
                 Opciones opcionesForm = new Opciones(remoto);
                 opcionesForm.Show();
-                
+
                 this.Hide();
             }
             catch (Exception ex)
@@ -29,8 +29,6 @@ namespace EquipoControlador_Proyecto
                 MessageBox.Show("Error: " + ex.Message);
             }
         }
-
-  
 
     }
 
