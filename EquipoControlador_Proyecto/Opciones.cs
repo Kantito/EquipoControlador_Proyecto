@@ -201,5 +201,10 @@ namespace EquipoControlador_Proyecto
             EnviarComandoAlServidor("DISCONNECT");
             Close(); // Cierra la ventana de opciones después de desconectar
         }
+
+        private void Procesos_ejecucion_Click(object sender, EventArgs e)
+        {
+            EnviarComandoAlServidor("GET_TOTAL_PROCESS"); 
+        }
     }
 }
