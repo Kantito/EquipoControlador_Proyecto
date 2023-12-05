@@ -174,15 +174,6 @@ namespace EquipoControlador_Proyecto
         {
             EnviarComandoAlServidor("GET_TOTAL_PROCESS");
         }
-        private void Subir_volumen_Click(object sender, EventArgs e)
-        {
-            EnviarComandoAlServidor("INCREASE_VOLUME");
-        }
-
-        private void Bajar_volumen_Click(object sender, EventArgs e)
-        {
-            EnviarComandoAlServidor("DECREASE_VOLUME");
-        }
 
         private void Captura_Pantalla_Click(object sender, EventArgs e)
         {
@@ -199,7 +190,37 @@ namespace EquipoControlador_Proyecto
         private void Desconectar_Click(object sender, EventArgs e)
         {
             EnviarComandoAlServidor("DISCONNECT");
-            Close(); // Cierra la ventana de opciones después de desconectar
+            Close();
+        }
+
+        private void Subir_volumen_Click_1(object sender, EventArgs e)
+        {
+            EnviarComandoAlServidor("INCREASE_VOLUMEN");
+        }
+
+        private void Bajar_volumen_Click_1(object sender, EventArgs e)
+        {
+            EnviarComandoAlServidor("DECREASE_VOLUMEN");
+        }
+
+        private void Silenciar_sonido_Click(object sender, EventArgs e)
+        {
+            EnviarComandoAlServidor("MUTE");
+        }
+
+        private void Apagar_equipo_Click(object sender, EventArgs e)
+        {
+            EnviarComandoAlServidor("TURN_OFF");
+        }
+
+        private void Reiniciar_equipo_Click(object sender, EventArgs e)
+        {
+            EnviarComandoAlServidor("RESET");
+        }
+
+        private void Desconectar_Click_1(object sender, EventArgs e)
+        {
+            EnviarComandoAlServidor("DISCONECT");
         }
     }
 }
