@@ -54,9 +54,10 @@
             // 
             // Nombre_SO
             // 
-            Nombre_SO.Location = new Point(49, 68);
+            Nombre_SO.Location = new Point(56, 80);
+            Nombre_SO.Margin = new Padding(3, 4, 3, 4);
             Nombre_SO.Name = "Nombre_SO";
-            Nombre_SO.Size = new Size(144, 26);
+            Nombre_SO.Size = new Size(165, 31);
             Nombre_SO.TabIndex = 0;
             Nombre_SO.Text = "Nombre SO";
             Nombre_SO.UseVisualStyleBackColor = true;
@@ -64,9 +65,10 @@
             // 
             // Plataforma_SO
             // 
-            Plataforma_SO.Location = new Point(49, 135);
+            Plataforma_SO.Location = new Point(56, 159);
+            Plataforma_SO.Margin = new Padding(3, 4, 3, 4);
             Plataforma_SO.Name = "Plataforma_SO";
-            Plataforma_SO.Size = new Size(144, 26);
+            Plataforma_SO.Size = new Size(165, 31);
             Plataforma_SO.TabIndex = 1;
             Plataforma_SO.Text = "Plataforma SO";
             Plataforma_SO.UseVisualStyleBackColor = true;
@@ -74,9 +76,10 @@
             // 
             // Version_SO
             // 
-            Version_SO.Location = new Point(49, 204);
+            Version_SO.Location = new Point(56, 240);
+            Version_SO.Margin = new Padding(3, 4, 3, 4);
             Version_SO.Name = "Version_SO";
-            Version_SO.Size = new Size(144, 26);
+            Version_SO.Size = new Size(165, 31);
             Version_SO.TabIndex = 2;
             Version_SO.Text = "Versión SO";
             Version_SO.UseVisualStyleBackColor = true;
@@ -84,9 +87,10 @@
             // 
             // Nombre_Equipo
             // 
-            Nombre_Equipo.Location = new Point(49, 275);
+            Nombre_Equipo.Location = new Point(56, 324);
+            Nombre_Equipo.Margin = new Padding(3, 4, 3, 4);
             Nombre_Equipo.Name = "Nombre_Equipo";
-            Nombre_Equipo.Size = new Size(144, 26);
+            Nombre_Equipo.Size = new Size(165, 31);
             Nombre_Equipo.TabIndex = 3;
             Nombre_Equipo.Text = "Nombre Equipo";
             Nombre_Equipo.UseVisualStyleBackColor = true;
@@ -94,9 +98,10 @@
             // 
             // Info_Procesador
             // 
-            Info_Procesador.Location = new Point(49, 343);
+            Info_Procesador.Location = new Point(56, 404);
+            Info_Procesador.Margin = new Padding(3, 4, 3, 4);
             Info_Procesador.Name = "Info_Procesador";
-            Info_Procesador.Size = new Size(144, 46);
+            Info_Procesador.Size = new Size(165, 54);
             Info_Procesador.TabIndex = 4;
             Info_Procesador.Text = "Información Procesador";
             Info_Procesador.UseVisualStyleBackColor = true;
@@ -104,9 +109,10 @@
             // 
             // Total_RAM
             // 
-            Total_RAM.Location = new Point(49, 411);
+            Total_RAM.Location = new Point(56, 484);
+            Total_RAM.Margin = new Padding(3, 4, 3, 4);
             Total_RAM.Name = "Total_RAM";
-            Total_RAM.Size = new Size(144, 26);
+            Total_RAM.Size = new Size(165, 31);
             Total_RAM.TabIndex = 5;
             Total_RAM.Text = "Total RAM";
             Total_RAM.UseVisualStyleBackColor = true;
@@ -114,9 +120,10 @@
             // 
             // Lista_Unidades_Disco_Duro
             // 
-            Lista_Unidades_Disco_Duro.Location = new Point(234, 68);
+            Lista_Unidades_Disco_Duro.Location = new Point(267, 80);
+            Lista_Unidades_Disco_Duro.Margin = new Padding(3, 4, 3, 4);
             Lista_Unidades_Disco_Duro.Name = "Lista_Unidades_Disco_Duro";
-            Lista_Unidades_Disco_Duro.Size = new Size(175, 26);
+            Lista_Unidades_Disco_Duro.Size = new Size(200, 31);
             Lista_Unidades_Disco_Duro.TabIndex = 6;
             Lista_Unidades_Disco_Duro.Text = "Lista Unidades de Disco Duro";
             Lista_Unidades_Disco_Duro.UseVisualStyleBackColor = true;
@@ -124,9 +131,10 @@
             // 
             // Resolucion_pantalla
             // 
-            Resolucion_pantalla.Location = new Point(234, 135);
+            Resolucion_pantalla.Location = new Point(267, 159);
+            Resolucion_pantalla.Margin = new Padding(3, 4, 3, 4);
             Resolucion_pantalla.Name = "Resolucion_pantalla";
-            Resolucion_pantalla.Size = new Size(175, 26);
+            Resolucion_pantalla.Size = new Size(200, 31);
             Resolucion_pantalla.TabIndex = 11;
             Resolucion_pantalla.Text = "Resolución Pantalla";
             Resolucion_pantalla.UseVisualStyleBackColor = true;
@@ -134,9 +142,10 @@
             // 
             // Nombre_Usuario
             // 
-            Nombre_Usuario.Location = new Point(234, 204);
+            Nombre_Usuario.Location = new Point(267, 240);
+            Nombre_Usuario.Margin = new Padding(3, 4, 3, 4);
             Nombre_Usuario.Name = "Nombre_Usuario";
-            Nombre_Usuario.Size = new Size(175, 26);
+            Nombre_Usuario.Size = new Size(200, 31);
             Nombre_Usuario.TabIndex = 12;
             Nombre_Usuario.Text = "Nombre Usuario";
             Nombre_Usuario.UseVisualStyleBackColor = true;
@@ -144,9 +153,10 @@
             // 
             // Zona_horaria
             // 
-            Zona_horaria.Location = new Point(234, 275);
+            Zona_horaria.Location = new Point(267, 324);
+            Zona_horaria.Margin = new Padding(3, 4, 3, 4);
             Zona_horaria.Name = "Zona_horaria";
-            Zona_horaria.Size = new Size(175, 26);
+            Zona_horaria.Size = new Size(200, 31);
             Zona_horaria.TabIndex = 13;
             Zona_horaria.Text = "Zona Horaria Sistema";
             Zona_horaria.UseVisualStyleBackColor = true;
@@ -154,9 +164,10 @@
             // 
             // Fecha_Hora
             // 
-            Fecha_Hora.Location = new Point(234, 343);
+            Fecha_Hora.Location = new Point(267, 404);
+            Fecha_Hora.Margin = new Padding(3, 4, 3, 4);
             Fecha_Hora.Name = "Fecha_Hora";
-            Fecha_Hora.Size = new Size(175, 26);
+            Fecha_Hora.Size = new Size(200, 31);
             Fecha_Hora.TabIndex = 14;
             Fecha_Hora.Text = "Fecha y hora equipo";
             Fecha_Hora.UseVisualStyleBackColor = true;
@@ -164,9 +175,10 @@
             // 
             // Procesos_ejecucion
             // 
-            Procesos_ejecucion.Location = new Point(234, 411);
+            Procesos_ejecucion.Location = new Point(267, 484);
+            Procesos_ejecucion.Margin = new Padding(3, 4, 3, 4);
             Procesos_ejecucion.Name = "Procesos_ejecucion";
-            Procesos_ejecucion.Size = new Size(175, 26);
+            Procesos_ejecucion.Size = new Size(200, 31);
             Procesos_ejecucion.TabIndex = 15;
             Procesos_ejecucion.Text = "Procesos en ejecución";
             Procesos_ejecucion.UseVisualStyleBackColor = true;
@@ -174,27 +186,32 @@
             // 
             // Captura_Pantalla
             // 
-            Captura_Pantalla.Location = new Point(446, 68);
+            Captura_Pantalla.Location = new Point(510, 80);
+            Captura_Pantalla.Margin = new Padding(3, 4, 3, 4);
             Captura_Pantalla.Name = "Captura_Pantalla";
-            Captura_Pantalla.Size = new Size(161, 26);
+            Captura_Pantalla.Size = new Size(184, 31);
             Captura_Pantalla.TabIndex = 16;
             Captura_Pantalla.Text = "Realizar captura de pantalla";
             Captura_Pantalla.UseVisualStyleBackColor = true;
+            Captura_Pantalla.Click += Captura_Pantalla_Click_1;
             // 
             // Enviar_mensaje
             // 
-            Enviar_mensaje.Location = new Point(446, 135);
+            Enviar_mensaje.Location = new Point(510, 159);
+            Enviar_mensaje.Margin = new Padding(3, 4, 3, 4);
             Enviar_mensaje.Name = "Enviar_mensaje";
-            Enviar_mensaje.Size = new Size(161, 26);
+            Enviar_mensaje.Size = new Size(184, 31);
             Enviar_mensaje.TabIndex = 17;
             Enviar_mensaje.Text = "Enviar Mensaje";
             Enviar_mensaje.UseVisualStyleBackColor = true;
+            Enviar_mensaje.Click += Enviar_mensaje_Click;
             // 
             // Subir_volumen
             // 
-            Subir_volumen.Location = new Point(446, 204);
+            Subir_volumen.Location = new Point(510, 240);
+            Subir_volumen.Margin = new Padding(3, 4, 3, 4);
             Subir_volumen.Name = "Subir_volumen";
-            Subir_volumen.Size = new Size(161, 26);
+            Subir_volumen.Size = new Size(184, 31);
             Subir_volumen.TabIndex = 18;
             Subir_volumen.Text = "Subir Volumen";
             Subir_volumen.UseVisualStyleBackColor = true;
@@ -202,9 +219,10 @@
             // 
             // Bajar_volumen
             // 
-            Bajar_volumen.Location = new Point(446, 275);
+            Bajar_volumen.Location = new Point(510, 324);
+            Bajar_volumen.Margin = new Padding(3, 4, 3, 4);
             Bajar_volumen.Name = "Bajar_volumen";
-            Bajar_volumen.Size = new Size(161, 26);
+            Bajar_volumen.Size = new Size(184, 31);
             Bajar_volumen.TabIndex = 19;
             Bajar_volumen.Text = "Bajar Volumen";
             Bajar_volumen.UseVisualStyleBackColor = true;
@@ -212,9 +230,10 @@
             // 
             // Silenciar_sonido
             // 
-            Silenciar_sonido.Location = new Point(446, 343);
+            Silenciar_sonido.Location = new Point(510, 404);
+            Silenciar_sonido.Margin = new Padding(3, 4, 3, 4);
             Silenciar_sonido.Name = "Silenciar_sonido";
-            Silenciar_sonido.Size = new Size(161, 26);
+            Silenciar_sonido.Size = new Size(184, 31);
             Silenciar_sonido.TabIndex = 20;
             Silenciar_sonido.Text = "Silenciar Sonido";
             Silenciar_sonido.UseVisualStyleBackColor = true;
@@ -222,9 +241,10 @@
             // 
             // Apagar_equipo
             // 
-            Apagar_equipo.Location = new Point(446, 411);
+            Apagar_equipo.Location = new Point(510, 484);
+            Apagar_equipo.Margin = new Padding(3, 4, 3, 4);
             Apagar_equipo.Name = "Apagar_equipo";
-            Apagar_equipo.Size = new Size(161, 26);
+            Apagar_equipo.Size = new Size(184, 31);
             Apagar_equipo.TabIndex = 21;
             Apagar_equipo.Text = "Apagar Equipo";
             Apagar_equipo.UseVisualStyleBackColor = true;
@@ -232,9 +252,10 @@
             // 
             // Reiniciar_equipo
             // 
-            Reiniciar_equipo.Location = new Point(638, 68);
+            Reiniciar_equipo.Location = new Point(729, 80);
+            Reiniciar_equipo.Margin = new Padding(3, 4, 3, 4);
             Reiniciar_equipo.Name = "Reiniciar_equipo";
-            Reiniciar_equipo.Size = new Size(109, 26);
+            Reiniciar_equipo.Size = new Size(125, 31);
             Reiniciar_equipo.TabIndex = 22;
             Reiniciar_equipo.Text = "Reiniciar Equipo";
             Reiniciar_equipo.UseVisualStyleBackColor = true;
@@ -242,9 +263,10 @@
             // 
             // Cerrar_sesion_Windows
             // 
-            Cerrar_sesion_Windows.Location = new Point(638, 135);
+            Cerrar_sesion_Windows.Location = new Point(729, 159);
+            Cerrar_sesion_Windows.Margin = new Padding(3, 4, 3, 4);
             Cerrar_sesion_Windows.Name = "Cerrar_sesion_Windows";
-            Cerrar_sesion_Windows.Size = new Size(109, 26);
+            Cerrar_sesion_Windows.Size = new Size(125, 31);
             Cerrar_sesion_Windows.TabIndex = 23;
             Cerrar_sesion_Windows.Text = "Cerrar Sesión";
             Cerrar_sesion_Windows.UseVisualStyleBackColor = true;
@@ -252,9 +274,10 @@
             // 
             // Finalizar_Procesos
             // 
-            Finalizar_Procesos.Location = new Point(638, 204);
+            Finalizar_Procesos.Location = new Point(729, 240);
+            Finalizar_Procesos.Margin = new Padding(3, 4, 3, 4);
             Finalizar_Procesos.Name = "Finalizar_Procesos";
-            Finalizar_Procesos.Size = new Size(109, 26);
+            Finalizar_Procesos.Size = new Size(125, 31);
             Finalizar_Procesos.TabIndex = 24;
             Finalizar_Procesos.Text = "Finalizar Procesos";
             Finalizar_Procesos.UseVisualStyleBackColor = true;
@@ -262,9 +285,10 @@
             // 
             // Desconectar
             // 
-            Desconectar.Location = new Point(638, 275);
+            Desconectar.Location = new Point(729, 324);
+            Desconectar.Margin = new Padding(3, 4, 3, 4);
             Desconectar.Name = "Desconectar";
-            Desconectar.Size = new Size(109, 26);
+            Desconectar.Size = new Size(125, 31);
             Desconectar.TabIndex = 25;
             Desconectar.Text = "Desconectar";
             Desconectar.UseVisualStyleBackColor = true;
@@ -272,9 +296,9 @@
             // 
             // Opciones
             // 
-            AutoScaleDimensions = new SizeF(7F, 17F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 510);
+            ClientSize = new Size(914, 600);
             Controls.Add(Desconectar);
             Controls.Add(Finalizar_Procesos);
             Controls.Add(Cerrar_sesion_Windows);
@@ -297,6 +321,7 @@
             Controls.Add(Version_SO);
             Controls.Add(Plataforma_SO);
             Controls.Add(Nombre_SO);
+            Margin = new Padding(3, 4, 3, 4);
             Name = "Opciones";
             Text = "Opciones";
             ResumeLayout(false);

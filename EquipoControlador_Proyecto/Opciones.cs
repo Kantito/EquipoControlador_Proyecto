@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Net.Sockets;
+using System.Text;
 using System.Windows.Forms;
 
 namespace EquipoControlador_Proyecto
@@ -10,6 +11,7 @@ namespace EquipoControlador_Proyecto
         private TcpClient client;
         private StreamWriter writer;
         private StreamReader reader;
+        private CapturaPantalla capturaPantallaForm;
 
         public Opciones(TcpClient connectedClient)
         {
@@ -20,6 +22,7 @@ namespace EquipoControlador_Proyecto
             reader = new StreamReader(stream);
             StartListeningForResponses(); // Comenzamos a escuchar respuestas del servidor
             EnableAllActionButtons();
+            capturaPantallaForm = new CapturaPantalla();
         }
         private async Task StartListeningForResponses()
         {
@@ -27,11 +30,9 @@ namespace EquipoControlador_Proyecto
             {
                 while (client.Connected)
                 {
-                    // Espera hasta que la línea sea leída antes de continuar.
                     var response = await reader.ReadLineAsync();
                     if (response != null)
                     {
-                        // Asegúrate de que las actualizaciones de la interfaz de usuario ocurran en el hilo de la interfaz de usuario.
                         this.Invoke(new Action(() =>
                         {
                             MessageBox.Show(response);
@@ -41,12 +42,10 @@ namespace EquipoControlador_Proyecto
             }
             catch (IOException ex)
             {
-                // Captura y maneja la excepción de E/S.
                 MessageBox.Show("Error en la operación del flujo: " + ex.Message);
             }
             catch (ObjectDisposedException ex)
             {
-                // El flujo fue cerrado y se intentó una operación en él.
                 MessageBox.Show("Flujo cerrado: " + ex.Message);
             }
         }
@@ -67,11 +66,6 @@ namespace EquipoControlador_Proyecto
         {
             return reader;
         }
-
-
-
-
-
 
         private void EnviarComandoAlServidor(string command)
         {
@@ -115,6 +109,7 @@ namespace EquipoControlador_Proyecto
             writer?.Close();
             reader?.Close();
             client?.Close();
+            capturaPantallaForm?.Close();
         }
 
         private void Nombre_SO_Click(object sender, EventArgs e)
@@ -174,23 +169,26 @@ namespace EquipoControlador_Proyecto
         {
             EnviarComandoAlServidor("GET_TOTAL_PROCESS");
         }
-
-        private void Captura_Pantalla_Click(object sender, EventArgs e)
+        //private async void Captura_Pantalla_Click_1(object sender, EventArgs e)
+        //{
+        //    EnviarComandoAlServidor("TAKE_SCREENSHOT");
+        //    await ReceiveAndDisplayScreenshot();
+        //}
+        private  void Captura_Pantalla_Click_1(object sender, EventArgs e)
         {
             EnviarComandoAlServidor("TAKE_SCREENSHOT");
         }
-        private void Cerrar_sesion_Windows_Click(object sender, EventArgs e)
+
+        private void Enviar_mensaje_Click(object sender, EventArgs e)
         {
-            EnviarComandoAlServidor("CLOSE_SESION");
-        }
-        private void Finalizar_Procesos_Click(object sender, EventArgs e)
-        {
-            EnviarComandoAlServidor("KILL_PROCESS");
-        }
-        private void Desconectar_Click(object sender, EventArgs e)
-        {
-            EnviarComandoAlServidor("DISCONNECT");
-            Close();
+            Mensaje formularioMensaje = new Mensaje();
+            formularioMensaje.setTextLabel("Ingrese el mensaje que desea enviar al computador remoto");
+            formularioMensaje.ShowDialog(); // Esto hará que el formulario de mensaje sea modal
+            string mensaje = formularioMensaje.getMensajeBox();
+            if (!string.IsNullOrEmpty(mensaje))
+            {
+                EnviarComandoAlServidor($"SEND_MESSAGE {mensaje}");
+            }
         }
 
         private void Subir_volumen_Click_1(object sender, EventArgs e)
@@ -211,16 +209,119 @@ namespace EquipoControlador_Proyecto
         private void Apagar_equipo_Click(object sender, EventArgs e)
         {
             EnviarComandoAlServidor("TURN_OFF");
+            Application.Exit();
         }
 
         private void Reiniciar_equipo_Click(object sender, EventArgs e)
         {
             EnviarComandoAlServidor("RESET");
+            Application.Exit();
+        }
+        private void Cerrar_sesion_Windows_Click(object sender, EventArgs e)
+        {
+            EnviarComandoAlServidor("CLOSE_SESION");
+            Application.Exit();
+        }
+        private void Finalizar_Procesos_Click(object sender, EventArgs e)
+        {
+            Mensaje formularioMensaje = new Mensaje();
+            formularioMensaje.setTextLabel("Ingrese el ID del proceso a finalizar");
+            formularioMensaje.ShowDialog();
+            string idProcesoTexto = formularioMensaje.getMensajeBox();
+            if (int.TryParse(idProcesoTexto, out int idProceso))
+            {
+                FinalizarProcesoPorID(idProceso);
+            }
+            else if (string.IsNullOrWhiteSpace(formularioMensaje.getMensajeBox()))
+            {
+                // simplemente no hace nada
+            }
+            else
+            {
+                MessageBox.Show("ID de proceso no válido.");
+            }
         }
 
         private void Desconectar_Click_1(object sender, EventArgs e)
         {
-            EnviarComandoAlServidor("DISCONECT");
+            EnviarComandoAlServidor("DISCONNECT");
+            Application.Exit();
         }
+        private void FinalizarProcesoPorID(int processID)
+        {
+            EnviarComandoAlServidor($"KILL_PROCESS {processID}");
+        }
+        //private async Task ReceiveAndDisplayScreenshot()
+        //{
+        //    try
+        //    {
+        //        if (client != null && client.Connected)
+        //        {
+        //            // Lee el nombre del archivo primero
+        //            byte[] fileNameLengthBytes = new byte[sizeof(int)];
+        //            await reader.BaseStream.ReadAsync(fileNameLengthBytes, 0, fileNameLengthBytes.Length);
+        //            int fileNameLength = BitConverter.ToInt32(fileNameLengthBytes, 0);
+
+        //            byte[] fileNameBytes = new byte[fileNameLength];
+        //            await reader.BaseStream.ReadAsync(fileNameBytes, 0, fileNameBytes.Length);
+        //            string fileName = Encoding.UTF8.GetString(fileNameBytes);
+
+        //            // Lee los datos de la imagen
+        //            using (MemoryStream memoryStream = new MemoryStream())
+        //            {
+        //                byte[] buffer = new byte[1024];
+        //                int bytesRead;
+
+        //                while ((bytesRead = await reader.BaseStream.ReadAsync(buffer, 0, buffer.Length)) > 0)
+        //                {
+        //                    memoryStream.Write(buffer, 0, bytesRead);
+        //                }
+
+        //                // Reinicia el MemoryStream al principio
+        //                memoryStream.Seek(0, SeekOrigin.Begin);
+
+        //                // Muestra la captura de pantalla en el formulario
+        //                ShowScreenshotInForm(memoryStream);
+        //            }
+        //        }
+        //    }
+        //    catch (OutOfMemoryException ex)
+        //    {
+        //        MessageBox.Show($"Error de memoria al recibir y mostrar la captura de pantalla: {ex.Message}");
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        MessageBox.Show($"Error al recibir y mostrar la captura de pantalla: {ex.Message}");
+        //    }
+        //}
+
+        //private void ShowScreenshotInForm(MemoryStream memoryStream)
+        //{
+        //    try
+        //    {
+        //        using (Image screenshot = Image.FromStream(memoryStream))
+        //        {
+        //            capturaPantallaForm.setScreenshot(screenshot);
+
+        //            if (!capturaPantallaForm.Visible)
+        //            {
+        //                capturaPantallaForm.Show();
+        //            }
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        MessageBox.Show($"Error al mostrar la captura de pantalla: {ex.Message}");
+        //    }
+        //}
+        //public void CloseForm()
+        //{
+        //    if (capturaPantallaForm.GetImage() != null)
+        //    {
+        //        capturaPantallaForm.GetImage().Dispose();
+        //    }
+        //    this.Close();
+        //}
+
     }
 }
